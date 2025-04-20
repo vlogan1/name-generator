@@ -83,11 +83,10 @@
 			}
 
 			function makeName() {
-				const nameLength = Math.floor(Math.random() * 3 + 1);
-
 				let name = "";
 
 				for (let i = 0; i < numnames; i++) {
+					let nameLength = Math.floor(Math.random() * 3 + 1);
 					for (let i = 0; i <= nameLength; i++) {
 						name = name + makeSyl();
 					}
