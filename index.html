@@ -104,15 +104,17 @@
 
 			document.body.querySelector("#namelist").innerText = makeName();
 
-			document.addEventListener("click", function () {
-				document.body.querySelector("#namelist").innerText = makeName();
-			});
+			if ('ontouchstart' in window) {
+				document.addEventListener("touchstart", function (event) {
+					event.preventDefault();
+					document.body.querySelector("#namelist").innerText = makeName();
+				}, { passive: false });
+			} else {
+				document.addEventListener("click", function () {
+					document.body.querySelector("#namelist").innerText = makeName();
+				});
+			}
 
-			document.addEventListener("touchstart", function (event) {
-				event.preventDefault();
-				document.body.querySelector("#namelist").innerText = makeName();
-			}, { passive: false });
-			
 		</script>
 	</body>
 </html>
