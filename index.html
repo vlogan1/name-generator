@@ -107,6 +107,11 @@
 			document.addEventListener("click", function () {
 				document.body.querySelector("#namelist").innerText = makeName();
 			});
+
+			document.addEventListener("touchstart", function (event) {
+				event.preventDefault();
+				document.body.querySelector("#namelist").innerText = makeName();
+			}, { passive: false });
 		</script>
 	</body>
 </html>
