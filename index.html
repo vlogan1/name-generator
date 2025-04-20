@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Name generator</title>
+		<style>
+			body {
+				font-family: monospace;
+				font-size: 100px;
+				background-color: black;
+				color: white;
+			}
+			#container {
+				display: grid;
+				justify-content: center;
+				align-content: center;
+				text-align: center;
+				user-select: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<p>Name:</p>
+			<h3 id="namelist"></h3>
+			<p id="iterationsnum"></p>
+		</div>
+
+		<script>
+			const vowels = ["e", "u", "i", "o", "a"];
+			const consonants = [
+				"q",
+				"w",
+				"r",
+				"t",
+				"p",
+				"s",
+				"d",
+				"f",
+				"g",
+				"h",
+				"j",
+				"k",
+				"l",
+				"z",
+				"x",
+				"c",
+				"v",
+				"b",
+				"n",
+				"m",
+				"y",
+				"",
+			];
+
+			function makeSyl() {
+				const sylCons =
+					consonants[Math.floor(Math.random() * consonants.length)];
+				const sylVowel = vowels[Math.floor(Math.random() * vowels.length)];
+
+				if (Math.random() > 0.2) {
+					return sylCons + sylVowel;
+				} else {
+					return sylVowel + sylCons;
+				}
+			}
+
+			function makeName() {
+				const nameLength = Math.floor(Math.random() * 3 + 1);
+
+				let name = "";
+
+				for (let i = 0; i <= nameLength; i++) {
+					name = name + makeSyl();
+				}
+
+				return name.charAt(0).toUpperCase() + name.slice(1);
+			}
+
+			document.body.querySelector("#namelist").innerText = makeName();
+
+			document.addEventListener("click", function () {
+				document.body.querySelector("#namelist").innerText = makeName();
+			});
+
+		</script>
+	</body>
+</html>
